@@ -1,0 +1,7 @@
+<!DOCTYPE html>
+<h1>Game Starts! enter yes or no</h1>
+<div *ngFor = "#questionOld of questionOld">
+  <p>{{questionOld}}</p>
+</div>
+<h1 class="">{{question}}</h1>
+<input type="text" [(ngModel)]="userAnswer" (keypress) = changeNumber($event)>
