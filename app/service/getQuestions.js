@@ -1,4 +1,4 @@
-System.register(["angular2/core", "angular2/http", 'rxjs/add/operator/map'], function(exports_1, context_1) {
+System.register(["angular2/core", "angular2/http"], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -11,7 +11,7 @@ System.register(["angular2/core", "angular2/http", 'rxjs/add/operator/map'], fun
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1, http_1;
-    var getQuestionsService;
+    var GetQuestionsService;
     return {
         setters:[
             function (core_1_1) {
@@ -19,26 +19,27 @@ System.register(["angular2/core", "angular2/http", 'rxjs/add/operator/map'], fun
             },
             function (http_1_1) {
                 http_1 = http_1_1;
-            },
-            function (_1) {}],
+            }],
         execute: function() {
-            getQuestionsService = (function () {
-                function getQuestionsService(_htpp) {
-                    this._htpp = _htpp;
+            GetQuestionsService = (function () {
+                function GetQuestionsService(http) {
+                    this.http = http;
                 }
-                getQuestionsService.prototype.getQuestionsYes = function () {
-                    return this._http.get('../json/questionsYes.json').map(function (res) { return res.json(); });
+                // Uses http.get() to load a single JSON file
+                GetQuestionsService.prototype.getQuestionsYes = function () {
+                    return this.http.get("/app/json/questionsYes.json").map(function (res) { return res.json(); });
                 };
-                getQuestionsService.prototype.getQuestionsNo = function () {
-                    return this._http.get('../json/questionsNo.json').map(function (res) { return res.json(); });
+                ;
+                GetQuestionsService.prototype.getQuestionsNo = function () {
+                    return this.http.get("/app/json/questionsNo.json").map(function (res) { return res.json(); });
                 };
-                getQuestionsService = __decorate([
+                GetQuestionsService = __decorate([
                     core_1.Injectable(), 
                     __metadata('design:paramtypes', [http_1.Http])
-                ], getQuestionsService);
-                return getQuestionsService;
+                ], GetQuestionsService);
+                return GetQuestionsService;
             }());
-            exports_1("getQuestionsService", getQuestionsService);
+            exports_1("GetQuestionsService", GetQuestionsService);
         }
     }
 });
